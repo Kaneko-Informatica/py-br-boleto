@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pyboleto.data
+    pybrboleto.data
     ~~~~~~~~~~~~~
 
     Base para criação dos módulos dos bancos. Comtém funções genéricas
@@ -15,7 +15,7 @@ from decimal import Decimal
 
 
 class BoletoException(Exception):
-    """ Exceções para erros no pyboleto"""
+    """ Exceções para erros no pybrboleto"""
     def __init__(self, message):
         Exception.__init__(self, message)
 
@@ -34,7 +34,7 @@ class CustomProperty(object):
 
     Aceita um numero com ou sem DV e remove o DV caso exista. Então preenxe
     com zfill até o tamanho adequado. Note que sempre que possível não use DVs
-    ao entrar valores no pyboleto. De preferência o pyboleto vai calcular
+    ao entrar valores no pybrboleto. De preferência o pybrboleto vai calcular
     todos os DVs quando necessário.
 
     :param name: O nome da propriedade.
@@ -71,7 +71,7 @@ class BoletoData(object):
     Esta classe geralmente nunca será usada diretamente. Geralmente o usuário
     irá usar uma das subclasses com a implementação específica de cada banco.
 
-    As classes dentro do pacote :mod:`pyboleto.bank` extendem essa classe
+    As classes dentro do pacote :mod:`pybrboleto.bank` extendem essa classe
     para implementar as especificações de cada banco.
     Portanto as especificações dentro desta classe são genéricas seguindo as
     normas da FEBRABAN.
@@ -174,7 +174,7 @@ class BoletoData(object):
     @property
     def barcode(self):
         """Essa função sempre é a mesma para todos os bancos. Então basta
-        implementar o método :func:`barcode` para o pyboleto calcular a linha
+        implementar o método :func:`barcode` para o pybrboleto calcular a linha
         digitável.
 
         Posição  #   Conteúdo

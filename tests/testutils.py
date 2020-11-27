@@ -12,11 +12,11 @@ import unittest
 
 from xml.etree.ElementTree import fromstring, tostring
 
-import pyboleto
+import pybrboleto
 
 
 try:
-    from pyboleto.pdf import BoletoPDF
+    from pybrboleto.pdf import BoletoPDF
 except ImportError as err:
     if sys.version_info >= (3,):
         pass  # Reportlab doesn;t support Python3
@@ -41,7 +41,7 @@ def list_recursively(directory, pattern):
 
 
 def get_sources(root):
-    for dirpath in ['pyboleto', 'tests']:
+    for dirpath in ['pybrboleto', 'tests']:
         path = os.path.join(root, dirpath)
         for fname in list_recursively(path, '*.py'):
             if fname.endswith('__init__.py'):
@@ -94,7 +94,7 @@ class SourceTest(object):
 
     @classmethod
     def __class_init__(cls, namespace):
-        root = os.path.dirname(os.path.dirname(pyboleto.__file__))
+        root = os.path.dirname(os.path.dirname(pybrboleto.__file__))
         cls.root = root
         for filename in get_sources(root):
             testname = filename[len(root):]
@@ -157,7 +157,7 @@ def pdftoxml(filename, output):
 
 class BoletoTestCase(unittest.TestCase):
     def _get_expected(self, bank, generated):
-        fname = os.path.join(os.path.dirname(pyboleto.__file__),
+        fname = os.path.join(os.path.dirname(pybrboleto.__file__),
                              "..", "tests", "xml", bank + '-expected.xml')
         if not os.path.exists(fname):
             with open(fname, 'wb') as f:
@@ -167,7 +167,7 @@ class BoletoTestCase(unittest.TestCase):
 
     def test_pdf_triplo_rendering(self):
         bank = type(self.dados[0]).__name__
-        filename = tempfile.mktemp(prefix="pyboleto-triplo-",
+        filename = tempfile.mktemp(prefix="pybrboleto-triplo-",
                                    suffix=".pdf")
         boleto = BoletoPDF(filename, True)
         for d in self.dados:
@@ -187,7 +187,7 @@ class BoletoTestCase(unittest.TestCase):
     def test_pdf_rendering(self):
         dados = self.dados[0]
         bank = type(dados).__name__
-        filename = tempfile.mktemp(prefix="pyboleto-",
+        filename = tempfile.mktemp(prefix="pybrboleto-",
                                    suffix=".pdf")
         boleto = BoletoPDF(filename, True)
         boleto.drawBoleto(dados)

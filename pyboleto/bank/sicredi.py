@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from pyboleto.data import BoletoData, custom_property
+from pybrboleto.data import BoletoData, custom_property
 
 
 class BoletoSicredi(BoletoData):

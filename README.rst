@@ -1,19 +1,19 @@
 ========
-py-br-boleto
+pybrboleto
 ========
 
-.. _py-br-boleto-synopsis:
+.. _pybrboleto-synopsis:
 
-O projeto original pode ser encontrado aqui: https://github.com/eduardocereto/pyboleto
+O projeto original pode ser encontrado aqui: https://github.com/eduardocereto/pybrboleto
 
-py-br-boleto provides a python class to generate "boletos de cobranca" as these
+pybrboleto provides a python class to generate "boletos de cobranca" as these
 are the Brazilian equivalent for invoices.
 
 It's easy to implement classes for new banks.
 
 This class is still in development and currently has no documented API.
 
-.. _py-br-boleto-implemented-bank:
+.. _pybrboleto-implemented-bank:
 
 Implemented Banks
 =================
@@ -49,76 +49,76 @@ For now here's where we are.
  | **Santander**        | 101, 201       | Yes             | No         |
  +----------------------+----------------+-----------------+------------+
 
-.. _py-br-boleto-docs:
+.. _pybrboleto-docs:
 
 Documentation
 =============
 
-http://packages.python.org/py-br-boleto/
+http://packages.python.org/pybrboleto/
 
-The best way to learn how to create Boletos using py-br-boleto is to look at the
-examples at `pdf_py-br-boleto_sample.py`_ or `html_py-br-boleto_sample.py`_
+The best way to learn how to create Boletos using pybrboleto is to look at the
+examples at `pdf_pybrboleto_sample.py`_ or `html_pybrboleto_sample.py`_
 
 
-.. _pdf_py-br-boleto_sample.py: https://github.com/eduardocereto/py-br-boleto/blob/master/bin/pdf_py-br-boleto_sample.py
+.. _pdf_pybrboleto_sample.py: https://github.com/eduardocereto/pybrboleto/blob/master/bin/pdf_pybrboleto_sample.py
 
-.. _html_py-br-boleto_sample.py: https://github.com/eduardocereto/py-br-boleto/blob/master/bin/html_py-br-boleto_sample.py
+.. _html_pybrboleto_sample.py: https://github.com/eduardocereto/pybrboleto/blob/master/bin/html_pybrboleto_sample.py
 
-.. _py-br-boleto-installation:
+.. _pybrboleto-installation:
 
 Installation
 ============
 
-You can install py-br-boleto either via the Python Package Index (PyPI)
+You can install pybrboleto either via the Python Package Index (PyPI)
 or from source.
 
 To install using pip,::
 
-    $ pip install py-br-boleto
+    $ pip install pybrboleto
 
 To install using easy_install,::
 
-    $ easy_install py-br-boleto
+    $ easy_install pybrboleto
 
 
-.. _py-br-boleto-installing-from-source:
+.. _pybrboleto-installing-from-source:
 
 Downloading and installing from source
 --------------------------------------
 
-Download the latest version of py-br-boleto from
-http://pypi.python.org/pypi/py-br-boleto/
+Download the latest version of pybrboleto from
+http://pypi.python.org/pypi/pybrboleto/
 
 You can install it by doing the following,::
 
-    $ tar xvfz py-br-boleto-0.0.0.tar.gz
-    $ cd py-br-boleto-0.0.0
+    $ tar xvfz pybrboleto-0.0.0.tar.gz
+    $ cd pybrboleto-0.0.0
     $ python setup.py build
     # python setup.py install # as root
 
-.. _py-br-boleto-installing-from-hg:
+.. _pybrboleto-installing-from-hg:
 
 Using the development version
 -----------------------------
 
 You can clone the repository by doing the following::
 
-    $ git clone https://github.com/eduardocereto/py-br-boleto.git
+    $ git clone https://github.com/eduardocereto/pybrboleto.git
 
-.. _py-br-boleto-unittests:
+.. _pybrboleto-unittests:
 
 Executing unittests
 ===================
 
 You need `pdftohtml`_.::
 
-    $ cd py-br-boleto
+    $ cd pybrboleto
     $ python setup.py test
 
 
 .. _pdftohtml: http://poppler.freedesktop.org/
 
-.. _py-br-boleto-license:
+.. _pybrboleto-license:
 
 License
 =======

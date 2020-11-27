@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pyboleto.bank.santander
+    pybrboleto.bank.santander
     ~~~~~~~~~~~~~~~~~~~~~~~
 
     Lógica para boletos do banco Santander.
@@ -14,7 +14,7 @@
     :license: BSD, see LICENSE for more details.
 
 """
-from pyboleto.data import BoletoData, CustomProperty
+from pybrboleto.data import BoletoData, CustomProperty
 
 
 class BoletoSantander(BoletoData):

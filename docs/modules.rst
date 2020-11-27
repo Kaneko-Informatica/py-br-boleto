@@ -1,7 +1,7 @@
-pyboleto
+pybrboleto
 ========
 
 .. toctree::
    :maxdepth: 4
 
-   pyboleto
+   pybrboleto

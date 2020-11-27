@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pyboleto.html
+    pybrboleto.html
     ~~~~~~~~~~~~~
 
     Classe Responsável por fazer o output do boleto em html.
@@ -72,23 +72,23 @@ class BoletoHTML(object):
                                        font_size_title=self.fontSizeTitle)
 
     def _load_template(self, template):
-        pyboleto_dir = os.path.dirname(os.path.abspath(__file__))
-        template_path = os.path.join(pyboleto_dir, 'templates', template)
+        pybrboleto_dir = os.path.dirname(os.path.abspath(__file__))
+        template_path = os.path.join(pybrboleto_dir, 'templates', template)
         with open(template_path, 'r') as tpl:
             template_content = tpl.read()
         return template_content
 
     def _load_image(self, logo_image):
-        pyboleto_dir = os.path.dirname(os.path.abspath(__file__))
-        image_path = os.path.join(pyboleto_dir, 'media', logo_image)
+        pybrboleto_dir = os.path.dirname(os.path.abspath(__file__))
+        image_path = os.path.join(pybrboleto_dir, 'media', logo_image)
         return image_path
 
     def _drawReciboSacado(self, boletoDados):
         """Imprime o Recibo do Sacado para modelo de página inteira
 
         :param boletoDados: Objeto com os dados do boleto a ser preenchido.
-            Deve ser subclasse de :class:`pyboleto.data.BoletoData`
-        :type boletoDados: :class:`pyboleto.data.BoletoData`
+            Deve ser subclasse de :class:`pybrboleto.data.BoletoData`
+        :type boletoDados: :class:`pybrboleto.data.BoletoData`
 
         """
         tpl = string.Template(self._load_template('recibo_sacado.html'))
@@ -136,8 +136,8 @@ class BoletoHTML(object):
         """Imprime o Recibo do Caixa
 
         :param boletoDados: Objeto com os dados do boleto a ser preenchido.
-            Deve ser subclasse de :class:`pyboleto.data.BoletoData`
-        :type boletoDados: :class:`pyboleto.data.BoletoData`
+            Deve ser subclasse de :class:`pybrboleto.data.BoletoData`
+        :type boletoDados: :class:`pybrboleto.data.BoletoData`
 
         """
         tpl = string.Template(self._load_template('recibo_caixa.html'))
@@ -201,11 +201,11 @@ class BoletoHTML(object):
         """Imprime um boleto tipo carnê com 2 boletos por página.
 
         :param boletoDados1: Objeto com os dados do boleto a ser preenchido.
-            Deve ser subclasse de :class:`pyboleto.data.BoletoData`
+            Deve ser subclasse de :class:`pybrboleto.data.BoletoData`
         :param boletoDados2: Objeto com os dados do boleto a ser preenchido.
-            Deve ser subclasse de :class:`pyboleto.data.BoletoData`
-        :type boletoDados1: :class:`pyboleto.data.BoletoData`
-        :type boletoDados2: :class:`pyboleto.data.BoletoData`
+            Deve ser subclasse de :class:`pybrboleto.data.BoletoData`
+        :type boletoDados1: :class:`pybrboleto.data.BoletoData`
+        :type boletoDados2: :class:`pybrboleto.data.BoletoData`
 
         """
         raise NotImplementedError('Em desenvolvimento')
@@ -217,8 +217,8 @@ class BoletoHTML(object):
         várias páginas, uma por boleto.
 
         :param boletoDados: Objeto com os dados do boleto a ser preenchido.
-            Deve ser subclasse de :class:`pyboleto.data.BoletoData`
-        :type boletoDados: :class:`pyboleto.data.BoletoData`
+            Deve ser subclasse de :class:`pybrboleto.data.BoletoData`
+        :type boletoDados: :class:`pybrboleto.data.BoletoData`
         """
         self._drawReciboSacado(boletoDados)
         self._drawHorizontalCorteLine()

@@ -18,15 +18,15 @@ def get_class_for_codigo(banco_codigo):
 
     :param banco_codigo:
     :type banco_codigo: string
-    :return: Classo do Banco subclasse de :class:`pyboleto.data.BoletoData`
-    :rtype: :class:`pyboleto.data.BoletoData`
+    :return: Classo do Banco subclasse de :class:`pybrboleto.data.BoletoData`
+    :rtype: :class:`pybrboleto.data.BoletoData`
     """
     try:
         banco = BANCOS_IMPLEMENTADOS[banco_codigo].split('.')
     except KeyError:
         raise(BoletoException('Este banco não é suportado.'))
 
-    mod = __import__('pyboleto.bank.' + banco[0],
+    mod = __import__('pybrboleto.bank.' + banco[0],
                      globals(), locals(), [banco[1]])
 
     return getattr(mod, banco[1])

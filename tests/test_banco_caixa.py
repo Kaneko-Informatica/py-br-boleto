@@ -2,7 +2,7 @@
 import unittest
 import datetime
 
-from pyboleto.bank.caixa import BoletoCaixa
+from pybrboleto.bank.caixa import BoletoCaixa
 
 from .testutils import BoletoTestCase
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pyboleto.pdf
+    pybrboleto.pdf
     ~~~~~~~~~~~~
 
     Classe Responsável por fazer o output do boleto em pdf usando Reportlab.
@@ -58,8 +58,8 @@ class BoletoPDF(object):
         """Imprime o Recibo do Sacado para modelo de carnê
 
         :param boleto_dados: Objeto com os dados do boleto a ser preenchido.
-            Deve ser subclasse de :class:`pyboleto.data.BoletoData`
-        :type boleto_dados: :class:`pyboleto.data.BoletoData`
+            Deve ser subclasse de :class:`pybrboleto.data.BoletoData`
+        :type boleto_dados: :class:`pybrboleto.data.BoletoData`
         :param x: Current X coordinate
         :param y: Current Y coordinate
 
@@ -172,8 +172,8 @@ class BoletoPDF(object):
         """Imprime o Recibo do Sacado para modelo de página inteira
 
         :param boleto_dados: Objeto com os dados do boleto a ser preenchido.
-            Deve ser subclasse de :class:`pyboleto.data.BoletoData`
-        :type boleto_dados: :class:`pyboleto.data.BoletoData`
+            Deve ser subclasse de :class:`pybrboleto.data.BoletoData`
+        :type boleto_dados: :class:`pybrboleto.data.BoletoData`
 
         """
 
@@ -426,8 +426,8 @@ class BoletoPDF(object):
         """Imprime o Recibo do Caixa
 
         :param boleto_dados: Objeto com os dados do boleto a ser preenchido.
-            Deve ser subclasse de :class:`pyboleto.data.BoletoData`
-        :type boleto_dados: :class:`pyboleto.data.BoletoData`
+            Deve ser subclasse de :class:`pybrboleto.data.BoletoData`
+        :type boleto_dados: :class:`pybrboleto.data.BoletoData`
 
         """
         self.pdf_canvas.saveState()
@@ -762,11 +762,11 @@ class BoletoPDF(object):
         """Imprime um boleto tipo carnê com 2 boletos por página.
 
         :param boletoDados1: Objeto com os dados do boleto a ser preenchido.
-            Deve ser subclasse de :class:`pyboleto.data.BoletoData`
+            Deve ser subclasse de :class:`pybrboleto.data.BoletoData`
         :param boletoDados2: Objeto com os dados do boleto a ser preenchido.
-            Deve ser subclasse de :class:`pyboleto.data.BoletoData`
-        :type boletoDados1: :class:`pyboleto.data.BoletoData`
-        :type boletoDados2: :class:`pyboleto.data.BoletoData`
+            Deve ser subclasse de :class:`pybrboleto.data.BoletoData`
+        :type boletoDados1: :class:`pybrboleto.data.BoletoData`
+        :type boletoDados2: :class:`pybrboleto.data.BoletoData`
 
         """
         y = 5 * mm
@@ -784,8 +784,8 @@ class BoletoPDF(object):
         drawBoletoCarneDuplo.
 
         :param boleto_dados: Objeto com os dados do boleto a ser preenchido.
-            Deve ser subclasse de :class:`pyboleto.data.BoletoData`
-        :type boleto_dados: :class:`pyboleto.data.BoletoData`
+            Deve ser subclasse de :class:`pybrboleto.data.BoletoData`
+        :type boleto_dados: :class:`pybrboleto.data.BoletoData`
         """
         x = 15 * mm
         d = self._draw_recibo_sacado_canhoto(boleto_dados, x, y)
@@ -803,8 +803,8 @@ class BoletoPDF(object):
         várias páginas, uma por boleto.
 
         :param boleto_dados: Objeto com os dados do boleto a ser preenchido.
-            Deve ser subclasse de :class:`pyboleto.data.BoletoData`
-        :type boleto_dados: :class:`pyboleto.data.BoletoData`
+            Deve ser subclasse de :class:`pybrboleto.data.BoletoData`
+        :type boleto_dados: :class:`pybrboleto.data.BoletoData`
         """
         x = 9 * mm  # margem esquerda
         y = 10 * mm  # margem inferior
@@ -878,6 +878,6 @@ class BoletoPDF(object):
 
 def load_image(logo_image):
     """Load Bank Image"""
-    pyboleto_dir = os.path.dirname(os.path.abspath(__file__))
-    image_path = os.path.join(pyboleto_dir, 'media', logo_image)
+    pybrboleto_dir = os.path.dirname(os.path.abspath(__file__))
+    image_path = os.path.join(pybrboleto_dir, 'media', logo_image)
     return image_path

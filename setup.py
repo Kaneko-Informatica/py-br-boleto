@@ -24,29 +24,29 @@ def get_version(package):
 
 
 setup(
-    name='pyboleto',
-    version=get_version('pyboleto'),
+    name='pybrboleto',
+    version=get_version('pybrboleto'),
     author='Eduardo Cereto Carvalho',
     author_email='eduardocereto@gmail.com',
-    url='https://github.com/eduardocereto/pyboleto',
+    url='https://github.com/eduardocereto/pybrboleto',
     packages=find_packages(),
     package_data={
         '': ['LICENSE'],
-        'pyboleto': ['media/*.jpg', 'templates/*.html'],
+        'pybrboleto': ['media/*.jpg', 'templates/*.html'],
         'tests': ['xml/*.xml']
     },
     zip_safe=False,
     provides=[
-        'pyboleto'
+        'pybrboleto'
     ],
     license='BSD',
     description='Python Library to create "boletos de cobrança bancária" for \
     several Brazilian banks',
     long_description=read('README.rst'),
-    download_url='http://pypi.python.org/pypi/pyboleto',
+    download_url='http://pypi.python.org/pypi/pybrboleto',
     scripts=[
-        'bin/html_pyboleto_sample.py',
-        'bin/pdf_pyboleto_sample.py'
+        'bin/html_pybrboleto_sample.py',
+        'bin/pdf_pybrboleto_sample.py'
     ],
     classifiers=[
         'Development Status :: 4 - Beta',

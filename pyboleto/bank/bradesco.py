@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pyboleto.bank.bradesco
+    pybrboleto.bank.bradesco
     ~~~~~~~~~~~~~~~~~~~~~~
 
     Lógica para boletos do banco Bradesco.
@@ -9,7 +9,7 @@
     :license: BSD, see LICENSE for more details.
 
 """
-from pyboleto.data import BoletoData, CustomProperty
+from pybrboleto.data import BoletoData, CustomProperty
 
 
 class BoletoBradesco(BoletoData):
