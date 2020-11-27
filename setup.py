@@ -26,9 +26,9 @@ def get_version(package):
 setup(
     name='pybrboleto',
     version=get_version('pybrboleto'),
-    author='Eduardo Cereto Carvalho',
-    author_email='eduardocereto@gmail.com',
-    url='https://github.com/eduardocereto/pybrboleto',
+    author='Kaneko Informatica',
+    author_email='kaneko@kaneko.com.br',
+    url='https://github.com/kanekoinformatica/pybrboleto',
     packages=find_packages(),
     package_data={
         '': ['LICENSE'],
@@ -40,8 +40,7 @@ setup(
         'pybrboleto'
     ],
     license='BSD',
-    description='Python Library to create "boletos de cobrança bancária" for \
-    several Brazilian banks',
+    description='Pacote para gerar Boletos.',
     long_description=read('README.rst'),
     download_url='http://pypi.python.org/pypi/pybrboleto',
     scripts=[
@@ -58,8 +57,6 @@ setup(
         'Natural Language :: Portuguese (Brazilian)',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 2.6',
         'Topic :: Office/Business :: Financial',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Framework :: Django',
