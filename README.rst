@@ -1,6 +1,6 @@
-========
+==========
 pybrboleto
-========
+==========
 
 .. _pybrboleto-synopsis:
 
