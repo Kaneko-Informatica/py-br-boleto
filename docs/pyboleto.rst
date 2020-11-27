@@ -1,10 +1,10 @@
-pybrboleto Package
+pyboleto Package
 ================
 
-:mod:`pybrboleto` Package
+:mod:`pyboleto` Package
 -----------------------
 
-.. automodule:: pybrboleto.__init__
+.. automodule:: pyboleto.__init__
     :members:
     :undoc-members:
     :show-inheritance:
@@ -12,7 +12,7 @@ pybrboleto Package
 :mod:`data` Module
 ------------------
 
-.. automodule:: pybrboleto.data
+.. automodule:: pyboleto.data
     :members:
     :undoc-members:
     :show-inheritance:
@@ -20,7 +20,7 @@ pybrboleto Package
 :mod:`pdf` Module
 -----------------
 
-.. automodule:: pybrboleto.pdf
+.. automodule:: pyboleto.pdf
     :members:
     :undoc-members:
     :show-inheritance:
@@ -28,7 +28,7 @@ pybrboleto Package
 :mod:`html` Module
 ------------------
 
-.. automodule:: pybrboleto.html
+.. automodule:: pyboleto.html
     :members:
     :undoc-members:
     :show-inheritance:
@@ -38,6 +38,6 @@ Subpackages
 
 .. toctree::
 
-    pybrboleto.bank
-    pybrboleto.django
+    pyboleto.bank
+    pyboleto.django
 

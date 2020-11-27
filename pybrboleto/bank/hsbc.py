@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from pybrboleto.data import BoletoData, CustomProperty
+from pyboleto.data import BoletoData, CustomProperty
 
 
 class BoletoHsbc(BoletoData):

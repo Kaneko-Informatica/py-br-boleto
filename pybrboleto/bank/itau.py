@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from pybrboleto.data import BoletoData, CustomProperty
+from pyboleto.data import BoletoData, CustomProperty
 
 
 class BoletoItau(BoletoData):
@@ -24,6 +24,8 @@ class BoletoItau(BoletoData):
         self.codigo_banco = "341"
         self.logo_image = "logo_itau.jpg"
         self.especie_documento = 'DM'
+        self.local_pagamento = 'Até o vencimento, preferencialmente no Itaú. ' +\
+                'Após o vencimento, somente no Itaú '
 
     @property
     def dv_nosso_numero(self):
@@ -39,7 +41,7 @@ class BoletoItau(BoletoData):
     @property
     def agencia_conta_cedente(self):
         return "%s/%s-%s" % (self.agencia_cedente, self.conta_cedente,
-                             self.dv_agencia_conta_cedente)
+                             self.conta_cedente_dv)
 
     def format_nosso_numero(self):
         return "%3s/%8s-%1s" % (self.carteira, self.nosso_numero,
@@ -52,7 +54,7 @@ class BoletoItau(BoletoData):
                                              self.dv_nosso_numero,
                                              self.agencia_cedente,
                                              self.conta_cedente,
-                                             self.dv_agencia_conta_cedente,
+                                             self.conta_cedente_dv,
                                              '000'
                                              )
         return content

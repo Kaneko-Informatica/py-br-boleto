@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pybrboleto.data
+    pyboleto.data
     ~~~~~~~~~~~~~
 
     Base para criação dos módulos dos bancos. Comtém funções genéricas
@@ -15,9 +15,7 @@ from decimal import Decimal
 
 
 class BoletoException(Exception):
-    """ Exceções para erros no pybrboleto"""
-    def __init__(self, message):
-        Exception.__init__(self, message)
+    pass
 
 
 _EPOCH = datetime.date(1997, 10, 7)
@@ -34,7 +32,7 @@ class CustomProperty(object):
 
     Aceita um numero com ou sem DV e remove o DV caso exista. Então preenxe
     com zfill até o tamanho adequado. Note que sempre que possível não use DVs
-    ao entrar valores no pybrboleto. De preferência o pybrboleto vai calcular
+    ao entrar valores no pyboleto. De preferência o pyboleto vai calcular
     todos os DVs quando necessário.
 
     :param name: O nome da propriedade.
@@ -71,7 +69,7 @@ class BoletoData(object):
     Esta classe geralmente nunca será usada diretamente. Geralmente o usuário
     irá usar uma das subclasses com a implementação específica de cada banco.
 
-    As classes dentro do pacote :mod:`pybrboleto.bank` extendem essa classe
+    As classes dentro do pacote :mod:`pyboleto.bank` extendem essa classe
     para implementar as especificações de cada banco.
     Portanto as especificações dentro desta classe são genéricas seguindo as
     normas da FEBRABAN.
@@ -143,6 +141,7 @@ class BoletoData(object):
         self.cedente_documento = kwargs.pop('cedente_documento', "")
         self.codigo_banco = kwargs.pop('codigo_banco', "")
         self.conta_cedente = kwargs.pop('conta_cedente', "")
+        self.conta_cedente_dv = kwargs.pop('conta_cedente_dv', "")
         self.data_documento = kwargs.pop('data_documento', "")
         self.data_processamento = kwargs.pop('data_processamento',
                                              datetime.date.today())
@@ -170,11 +169,12 @@ class BoletoData(object):
         self._sacado = None
         self._valor = None
         self._valor_documento = None
+        self.label_cedente = 'Agência/Código beneficiário'
 
     @property
     def barcode(self):
         """Essa função sempre é a mesma para todos os bancos. Então basta
-        implementar o método :func:`barcode` para o pybrboleto calcular a linha
+        implementar o método :func:`barcode` para o pyboleto calcular a linha
         digitável.
 
         Posição  #   Conteúdo
@@ -298,7 +298,7 @@ class BoletoData(object):
     def _cedente_endereco_set(self, endereco):
         if len(endereco) > 80:
             raise BoletoException(
-                u'Linha de endereço possui mais que 80 caracteres')
+                'Linha de endereço possui mais que 80 caracteres')
         self._cedente_endereco = endereco
     cedente_endereco = property(_cedente_endereco_get, _cedente_endereco_set)
     """Endereço do Cedente com no máximo 80 caracteres"""
@@ -347,11 +347,11 @@ class BoletoData(object):
 
         if len(list_inst) > 7:
             raise BoletoException(
-                u'Número de linhas de instruções maior que 7')
+                'Número de linhas de instruções maior que 7')
         for line in list_inst:
             if len(line) > 90:
                 raise BoletoException(
-                    u'Linha de instruções possui mais que 90 caracteres')
+                    'Linha de instruções possui mais que 90 caracteres')
         self._instrucoes = list_inst
     instrucoes = property(_instrucoes_get, _instrucoes_set)
     """Instruções para o caixa do banco que recebe o bilhete
@@ -371,11 +371,11 @@ class BoletoData(object):
 
         if len(list_dem) > 12:
             raise BoletoException(
-                u'Número de linhas de demonstrativo maior que 12')
+                'Número de linhas de demonstrativo maior que 12')
         for line in list_dem:
             if len(line) > 90:
                 raise BoletoException(
-                    u'Linha de demonstrativo possui mais que 90 caracteres')
+                    'Linha de demonstrativo possui mais que 90 caracteres')
         self._demonstrativo = list_dem
     demonstrativo = property(_demonstrativo_get, _demonstrativo_set)
     """Texto que vai impresso no corpo do Recibo do Sacado
@@ -409,7 +409,7 @@ class BoletoData(object):
 
     def _sacado_set(self, list_sacado):
         if len(list_sacado) > 3:
-            raise BoletoException(u'Número de linhas do sacado maior que 3')
+            raise BoletoException('Número de linhas do sacado maior que 3')
         self._sacado = list_sacado
     sacado = property(_sacado_get, _sacado_set)
     """Campo sacado composto por até 3 linhas.

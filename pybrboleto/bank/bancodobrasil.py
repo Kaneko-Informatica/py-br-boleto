@@ -3,7 +3,7 @@
     Boleto for Banco do Brasil
 """
 # -*- coding: utf-8 -*-
-from pybrboleto.data import BoletoData, CustomProperty
+from pyboleto.data import BoletoData, CustomProperty
 
 '''
 /*
@@ -57,13 +57,13 @@ class BoletoBB(BoletoData):
 
         self._convenio = ""
         self._nosso_numero = ""
+        self.local_pagamento = 'Pagável em qualquer banco até o vencimento. \
+Após, atualize o boleto no site bb.com.br'
 
     def format_nosso_numero(self):
         if self.format_convenio == 7:
-            return "%7s%10s" % (
-                self.convenio,
-                self.nosso_numero
-            )
+            return '{:.7}'.format(self.convenio.zfill(7)) + '{:.10}'.format(
+                self.nosso_numero)
         else:
             return "%s%s-%s" % (
                 self.convenio,
@@ -134,18 +134,18 @@ class BoletoBB(BoletoData):
                                       self.nosso_numero,
                                       self.agencia_cedente,
                                       self.conta_cedente,
-                                      self.carteira)
+                                      self.carteira[:2])
         elif self.format_convenio in (7, 8):
             content = "000000%s%s%s" % (self.convenio,
                                         self.nosso_numero,
-                                        self.carteira)
+                                        self.carteira[:2])
         elif self.format_convenio == 6:
             if self.format_nnumero == 1:
                 content = "%s%s%s%s%s" % (self.convenio,
                                           self.nosso_numero,
                                           self.agencia_cedente,
                                           self.conta_cedente,
-                                          self.carteira)
+                                          self.carteira[:2])
             if self.format_nnumero == 2:
                 content = "%s%s%s" % (self.convenio,
                                       self.nosso_numero,

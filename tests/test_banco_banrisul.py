@@ -2,7 +2,7 @@
 import datetime
 import unittest
 
-from pybrboleto.bank.banrisul import BoletoBanrisul
+from pyboleto.bank.banrisul import BoletoBanrisul
 
 from .testutils import BoletoTestCase
 

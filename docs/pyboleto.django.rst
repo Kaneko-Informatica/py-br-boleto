@@ -4,7 +4,7 @@ django Package
 :mod:`admin` Module
 -------------------
 
-.. automodule:: pybrboleto.django.admin
+.. automodule:: pyboleto.django.admin
     :members:
     :undoc-members:
     :show-inheritance:
@@ -12,7 +12,7 @@ django Package
 :mod:`models` Module
 --------------------
 
-.. automodule:: pybrboleto.django.models
+.. automodule:: pyboleto.django.models
     :members:
     :undoc-members:
     :show-inheritance:
@@ -20,7 +20,7 @@ django Package
 :mod:`views` Module
 -------------------
 
-.. automodule:: pybrboleto.django.views
+.. automodule:: pyboleto.django.views
     :members:
     :undoc-members:
     :show-inheritance:

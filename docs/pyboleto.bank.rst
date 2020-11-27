@@ -4,7 +4,7 @@ bank Package
 :mod:`bank` Package
 -------------------
 
-.. automodule:: pybrboleto.bank
+.. automodule:: pyboleto.bank
     :members:
     :undoc-members:
     :show-inheritance:
@@ -12,7 +12,7 @@ bank Package
 :mod:`bancodobrasil` Module
 ---------------------------
 
-.. automodule:: pybrboleto.bank.bancodobrasil
+.. automodule:: pyboleto.bank.bancodobrasil
     :members:
     :undoc-members:
     :show-inheritance:
@@ -20,7 +20,7 @@ bank Package
 :mod:`banrisul` Module
 ----------------------
 
-.. automodule:: pybrboleto.bank.banrisul
+.. automodule:: pyboleto.bank.banrisul
     :members:
     :undoc-members:
     :show-inheritance:
@@ -28,7 +28,7 @@ bank Package
 :mod:`bradesco` Module
 ----------------------
 
-.. automodule:: pybrboleto.bank.bradesco
+.. automodule:: pyboleto.bank.bradesco
     :members:
     :undoc-members:
     :show-inheritance:
@@ -36,7 +36,7 @@ bank Package
 :mod:`caixa` Module
 -------------------
 
-.. automodule:: pybrboleto.bank.caixa
+.. automodule:: pyboleto.bank.caixa
     :members:
     :undoc-members:
     :show-inheritance:
@@ -44,7 +44,7 @@ bank Package
 :mod:`hsbc` Module
 ------------------
 
-.. automodule:: pybrboleto.bank.hsbc
+.. automodule:: pyboleto.bank.hsbc
     :members:
     :undoc-members:
     :show-inheritance:
@@ -52,7 +52,7 @@ bank Package
 :mod:`itau` Module
 ------------------
 
-.. automodule:: pybrboleto.bank.itau
+.. automodule:: pyboleto.bank.itau
     :members:
     :undoc-members:
     :show-inheritance:
@@ -60,7 +60,7 @@ bank Package
 :mod:`real` Module
 ------------------
 
-.. automodule:: pybrboleto.bank.real
+.. automodule:: pyboleto.bank.real
     :members:
     :undoc-members:
     :show-inheritance:
@@ -68,7 +68,7 @@ bank Package
 :mod:`santander` Module
 ------------------
 
-.. automodule:: pybrboleto.bank.santander
+.. automodule:: pyboleto.bank.santander
     :members:
     :undoc-members:
     :show-inheritance:

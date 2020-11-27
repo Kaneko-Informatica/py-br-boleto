@@ -2,7 +2,7 @@
 import unittest
 import datetime
 
-from pybrboleto.bank.caixa import BoletoCaixa
+from pyboleto.bank.caixa import BoletoCaixa
 
 from .testutils import BoletoTestCase
 
@@ -12,9 +12,10 @@ class TestBancoCaixa(BoletoTestCase):
         self.dados = []
         for i in range(3):
             d = BoletoCaixa()
-            d.carteira = 'SR'
+            d.carteira = '1'
             d.agencia_cedente = '1565'
-            d.conta_cedente = '87000000414'
+            d.conta_cedente = '52980'
+            d.codigo_beneficiario = '123456'
             d.data_vencimento = datetime.date(2012, 7, 8)
             d.data_documento = datetime.date(2012, 7, 3)
             d.data_processamento = datetime.date(2012, 7, 3)
@@ -24,16 +25,18 @@ class TestBancoCaixa(BoletoTestCase):
             self.dados.append(d)
 
     def test_linha_digitavel(self):
-        self.assertEqual(self.dados[0].linha_digitavel,
-            '10498.01952 25086.156582 70000.004146 1 53880000295295'
+        self.assertEqual(
+            self.dados[0].linha_digitavel,
+            '10491.23456 60000.100846 01952.508644 3 53880000295295'
         )
 
     def test_tamanho_codigo_de_barras(self):
         self.assertEqual(len(self.dados[0].barcode), 44)
 
     def test_codigo_de_barras(self):
-        self.assertEqual(self.dados[0].barcode,
-            '10491538800002952958019525086156587000000414'
+        self.assertEqual(
+            self.dados[0].barcode,
+            '10493538800002952951234560000100840195250864'
         )
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestBancoCaixa)

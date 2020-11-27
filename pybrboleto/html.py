@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-    pybrboleto.html
+    pyboleto.html
     ~~~~~~~~~~~~~
 
     Classe Responsável por fazer o output do boleto em html.
 
     :copyright: © 2012 by Artur Felipe de Sousa
     :license: BSD, see LICENSE for more details.
-
+    
 """
 import os
 import string
@@ -17,7 +17,7 @@ import base64
 
 from itertools import chain
 if sys.version_info < (3,):
-    from itertools import izip_longest as zip_longest
+    from itertools import zip_longest as zip_longest
     zip_longest  # chamando para evitar erro de nao uso do zip_longest
 else:
     from itertools import zip_longest
@@ -72,23 +72,23 @@ class BoletoHTML(object):
                                        font_size_title=self.fontSizeTitle)
 
     def _load_template(self, template):
-        pybrboleto_dir = os.path.dirname(os.path.abspath(__file__))
-        template_path = os.path.join(pybrboleto_dir, 'templates', template)
-        with open(template_path, 'r') as tpl:
+        pyboleto_dir = os.path.dirname(os.path.abspath(__file__))
+        template_path = os.path.join(pyboleto_dir, 'templates', template)
+        with open(template_path, 'r', encoding='utf-8') as tpl:
             template_content = tpl.read()
         return template_content
 
     def _load_image(self, logo_image):
-        pybrboleto_dir = os.path.dirname(os.path.abspath(__file__))
-        image_path = os.path.join(pybrboleto_dir, 'media', logo_image)
+        pyboleto_dir = os.path.dirname(os.path.abspath(__file__))
+        image_path = os.path.join(pyboleto_dir, 'media', logo_image)
         return image_path
 
     def _drawReciboSacado(self, boletoDados):
         """Imprime o Recibo do Sacado para modelo de página inteira
 
         :param boletoDados: Objeto com os dados do boleto a ser preenchido.
-            Deve ser subclasse de :class:`pybrboleto.data.BoletoData`
-        :type boletoDados: :class:`pybrboleto.data.BoletoData`
+            Deve ser subclasse de :class:`pyboleto.data.BoletoData`
+        :type boletoDados: :class:`pyboleto.data.BoletoData`
 
         """
         tpl = string.Template(self._load_template('recibo_sacado.html'))
@@ -97,10 +97,11 @@ class BoletoHTML(object):
         # Cabeçalho
         tpl_data['logo_img'] = ''
         if boletoDados.logo_image:
-            img = codecs.open(self._load_image(boletoDados.logo_image))
+            img = codecs.open(
+                self._load_image(boletoDados.logo_image), mode='rb')
             aux = img.read()
             aux = base64.b64encode(aux)
-            img_base64 = 'data:image/jpeg;base64,{0}'.format(aux)
+            img_base64 = 'data:image/jpeg;base64,{0}'.format(aux.decode())
             tpl_data['logo_img'] = img_base64
         tpl_data['codigo_dv_banco'] = boletoDados.codigo_dv_banco
 
@@ -136,8 +137,8 @@ class BoletoHTML(object):
         """Imprime o Recibo do Caixa
 
         :param boletoDados: Objeto com os dados do boleto a ser preenchido.
-            Deve ser subclasse de :class:`pybrboleto.data.BoletoData`
-        :type boletoDados: :class:`pybrboleto.data.BoletoData`
+            Deve ser subclasse de :class:`pyboleto.data.BoletoData`
+        :type boletoDados: :class:`pyboleto.data.BoletoData`
 
         """
         tpl = string.Template(self._load_template('recibo_caixa.html'))
@@ -146,7 +147,12 @@ class BoletoHTML(object):
         # Cabeçalho
         tpl_data['logo_img'] = ''
         if boletoDados.logo_image:
-            tpl_data['logo_img'] = self._load_image(boletoDados.logo_image)
+            img = codecs.open(
+                self._load_image(boletoDados.logo_image), mode='rb')
+            aux = img.read()
+            aux = base64.b64encode(aux)
+            img_base64 = 'data:image/jpeg;base64,{0}'.format(aux.decode())
+            tpl_data['logo_img'] = img_base64
         tpl_data['codigo_dv_banco'] = boletoDados.codigo_dv_banco
         tpl_data['linha_digitavel'] = boletoDados.linha_digitavel
 
@@ -155,11 +161,10 @@ class BoletoHTML(object):
         tpl_data['data_vencimento'] = data_vencimento.strftime('%d/%m/%Y')
 
         # value em unicode em data.py
-        if isinstance(boletoDados.local_pagamento, unicode):
-            tpl_data['local_pagamento'] = boletoDados.local_pagamento.encode
-            ('utf-8')
-        else:
+        if isinstance(boletoDados.local_pagamento, str):
             tpl_data['local_pagamento'] = boletoDados.local_pagamento
+        else:
+            tpl_data['local_pagamento'] = boletoDados.local_pagamento.decode()
         tpl_data['cedente'] = boletoDados.cedente
         tpl_data['agencia_conta_cedente'] = boletoDados.agencia_conta_cedente
 
@@ -201,11 +206,11 @@ class BoletoHTML(object):
         """Imprime um boleto tipo carnê com 2 boletos por página.
 
         :param boletoDados1: Objeto com os dados do boleto a ser preenchido.
-            Deve ser subclasse de :class:`pybrboleto.data.BoletoData`
+            Deve ser subclasse de :class:`pyboleto.data.BoletoData`
         :param boletoDados2: Objeto com os dados do boleto a ser preenchido.
-            Deve ser subclasse de :class:`pybrboleto.data.BoletoData`
-        :type boletoDados1: :class:`pybrboleto.data.BoletoData`
-        :type boletoDados2: :class:`pybrboleto.data.BoletoData`
+            Deve ser subclasse de :class:`pyboleto.data.BoletoData`
+        :type boletoDados1: :class:`pyboleto.data.BoletoData`
+        :type boletoDados2: :class:`pyboleto.data.BoletoData`
 
         """
         raise NotImplementedError('Em desenvolvimento')
@@ -217,8 +222,8 @@ class BoletoHTML(object):
         várias páginas, uma por boleto.
 
         :param boletoDados: Objeto com os dados do boleto a ser preenchido.
-            Deve ser subclasse de :class:`pybrboleto.data.BoletoData`
-        :type boletoDados: :class:`pybrboleto.data.BoletoData`
+            Deve ser subclasse de :class:`pyboleto.data.BoletoData`
+        :type boletoDados: :class:`pyboleto.data.BoletoData`
         """
         self._drawReciboSacado(boletoDados)
         self._drawHorizontalCorteLine()
@@ -257,8 +262,8 @@ class BoletoHTML(object):
 
         for digt1, digt2 in self._grouper(2, code):
             digt1_repr = DIGITS[int(digt1)]
-            digt2_repr = map(lambda x: x + ' s', DIGITS[int(digt2)])
-            digits.extend(chain(*zip(digt1_repr, digt2_repr)))
+            digt2_repr = [x + ' s' for x in DIGITS[int(digt2)]]
+            digits.extend(chain(*list(zip(digt1_repr, digt2_repr))))
 
         digits.extend(['w', 'n s', 'n'])
 

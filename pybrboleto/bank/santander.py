@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-    pybrboleto.bank.santander
+    pyboleto.bank.santander
     ~~~~~~~~~~~~~~~~~~~~~~~
 
     Lógica para boletos do banco Santander.
@@ -14,10 +14,11 @@
     :license: BSD, see LICENSE for more details.
 
 """
-from pybrboleto.data import BoletoData, CustomProperty
+from pyboleto.data import BoletoData, CustomProperty
 
 
 class BoletoSantander(BoletoData):
+
     '''
         Gera Dados necessários para criação de boleto para o banco Santander
     '''
@@ -35,7 +36,7 @@ class BoletoSantander(BoletoData):
         super(BoletoSantander, self).__init__()
 
         self.codigo_banco = "033"
-        self.logo_image = "logo_santander.jpg"
+        self.logo_image = "logo_santander.png"
         self.carteira = '102'
         # IOS - somente para Seguradoras (Se 7% informar 7, limitado 9%)
         # Demais clientes usar 0 (zero)
@@ -53,11 +54,15 @@ class BoletoSantander(BoletoData):
     @property
     def campo_livre(self):
         content = "".join([
-                           '9',
-                           self.conta_cedente,
-                           self.nosso_numero,
-                           self._dv_nosso_numero(),
-                           self.ios,
-                           self.carteira,
-                           ])
+            '9',
+            self.conta_cedente[-7:],
+            self.nosso_numero,
+            self._dv_nosso_numero(),
+            self.ios,
+            self.carteira,
+        ])
         return content
+
+    @property
+    def agencia_conta_cedente(self):
+        return "%s/%s" % (self.agencia_cedente, self.conta_cedente[-7:])
