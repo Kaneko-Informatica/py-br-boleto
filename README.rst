@@ -1,16 +1,10 @@
 ========
-pyboleto
+py-br-boleto
 ========
-|travis| |pypi|
-
-.. |travis| image:: https://secure.travis-ci.org/eduardocereto/pyboleto.png?branch=master
-   :target: http://travis-ci.org/#!/eduardocereto/pyboleto
-   
-.. |pypi| image:: https://img.shields.io/pypi/v/pyboleto.svg
-    :target: https://pypi.python.org/pypi/pyboleto/
- 
 
 .. _pyboleto-synopsis:
+
+O projeto original pode ser encontrado aqui: https://github.com/eduardocereto/pyboleto
 
 pyboleto provides a python class to generate "boletos de cobranca" as these
 are the Brazilian equivalent for invoices.
@@ -18,9 +12,6 @@ are the Brazilian equivalent for invoices.
 It's easy to implement classes for new banks.
 
 This class is still in development and currently has no documented API.
-
-.. contents::
-    :local:
 
 .. _pyboleto-implemented-bank:
 
